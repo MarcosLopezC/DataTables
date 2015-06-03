@@ -562,7 +562,7 @@
 					var controls = $(">span", an[i]);
 
 					/* Build up the dynamic list forst - html and listeners */
-					var qjPaginateList = controls[2];
+					var qjPaginateList = controls.eq(2);
 					qjPaginateList.html( sList );
 					$('span', qjPaginateList).bind( 'click.DT', fnClick ).bind( 'mousedown.DT', fnFalse )
 						.bind( 'selectstart.DT', fnFalse );
