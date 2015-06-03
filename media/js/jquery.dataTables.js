@@ -1,6 +1,10 @@
 /*
+	This is a fork by MarcosLopezC.
+*/
+
+/*
  * File:        jquery.dataTables.js
- * Version:     1.8.2
+ * Version:     0.0.1 (1.8.2 fork)
  * Description: Paginate, search and sort HTML tables
  * Author:      Allan Jardine (www.sprymedia.co.uk)
  * Created:     28/3/2008
