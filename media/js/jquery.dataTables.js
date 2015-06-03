@@ -153,6 +153,7 @@
 		"sPageButton": "paginate_button",
 		"sPageButtonActive": "paginate_active",
 		"sPageButtonStaticDisabled": "paginate_button paginate_button_disabled",
+		"sPageList": "paginate_list",
 		"sPageFirst": "first",
 		"sPagePrevious": "previous",
 		"sPageNext": "next",
@@ -424,6 +425,8 @@
 				nNext.className= oClasses.sPageButton+" "+oClasses.sPageNext;
 				nLast.className = oClasses.sPageButton+" "+oClasses.sPageLast;
 
+				nList.className = oClasses.sPageList;
+
 				nPaging.appendChild( nFirst );
 				nPaging.appendChild( nPrevious );
 				nPaging.appendChild( nList );
@@ -556,14 +559,16 @@
 						continue;
 					}
 
+					var controls = $(">span", an[i]);
+
 					/* Build up the dynamic list forst - html and listeners */
-					var qjPaginateList = $('span:eq(2)', an[i]);
+					var qjPaginateList = controls[2];
 					qjPaginateList.html( sList );
 					$('span', qjPaginateList).bind( 'click.DT', fnClick ).bind( 'mousedown.DT', fnFalse )
 						.bind( 'selectstart.DT', fnFalse );
 
 					/* Update the 'premanent botton's classes */
-					anButtons = an[i].getElementsByTagName('span');
+					anButtons = controls.toArray();
 					anStatic = [
 						anButtons[0], anButtons[1],
 						anButtons[anButtons.length-2], anButtons[anButtons.length-1]
