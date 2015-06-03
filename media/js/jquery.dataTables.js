@@ -1370,6 +1370,8 @@
 			*/
 			this.fnFormatNumber = function ( iIn )
 			{
+				var s, a, out, iLen;
+
 				if ( iIn < 1000 )
 				{
 					/* A small optimisation for what is likely to be the vast majority of use cases */
@@ -1377,7 +1379,10 @@
 				}
 				else
 				{
-					var s=(iIn+""), a=s.split(""), out="", iLen=s.length;
+					s = (iIn+"");
+					a = s.split("");
+					out = "";
+					iLen = s.length;
 
 					for ( var i=0 ; i<iLen ; i++ )
 					{
@@ -3554,6 +3559,8 @@
 		*/
 		function _fnAjaxUpdateDraw ( oSettings, json )
 		{
+			var aiIndex;
+
 			if ( typeof json.sEcho != 'undefined' )
 			{
 				/* Protect against old returns over-writing a new one. Possible when you get
@@ -3582,7 +3589,7 @@
 			var bReOrder = (typeof json.sColumns != 'undefined' && sOrdering !== "" && json.sColumns != sOrdering );
 			if ( bReOrder )
 			{
-				var aiIndex = _fnReOrderIndex( oSettings, json.sColumns );
+				aiIndex = _fnReOrderIndex( oSettings, json.sColumns );
 			}
 
 			var fnDataSrc = _fnGetObjectDataFn( oSettings.sAjaxDataProp );
@@ -3971,7 +3978,8 @@
 				iWidth, aApplied=[], iSanityWidth,
 				nScrollFootInner = (o.nTFoot !== null) ? o.nScrollFoot.getElementsByTagName('div')[0] : null,
 				nScrollFootTable = (o.nTFoot !== null) ? nScrollFootInner.getElementsByTagName('table')[0] : null,
-				ie67 = $.browser.msie && $.browser.version <= 7;
+				ie67 = $.browser.msie && $.browser.version <= 7,
+				nTfootSize;
 
 			/*
 			* 1. Re-create the table inside the scrolling div
@@ -3987,7 +3995,7 @@
 			if ( o.nTFoot !== null )
 			{
 				/* Remove the old minimised footer element in the cloned header */
-				var nTfootSize = o.nTable.getElementsByTagName('tfoot');
+				nTfootSize = o.nTable.getElementsByTagName('tfoot');
 				if ( nTfootSize.length > 0 )
 				{
 					o.nTable.removeChild( nTfootSize[0] );
